@@ -32,10 +32,10 @@ jobs:
       run: docker --version
       
     - name: login
-      run: docker login -u ${{ secrets.USERNAME }} -p {{ secrets.MYTOKEN }} github.com
+      run: docker login ghcr.io -u ${{ secrets.USERNAME }} -p {{ secrets.MYTOKEN }} 
       
     - name: Build Image
-      run: docker build -t github.com/RaviPolina/SampleMavenApp/maven-project:latest -f Dockerfile
+      run: docker build -t maven-project:latest -f Dockerfile
       
     - name: Docker Push
-      run: docker push github.com/RaviPolina/SampleMavenApp/maven-project:latest
+      run: docker push ghcr.io/RAVI/maven-project:latest
