@@ -32,7 +32,7 @@ jobs:
       run: docker --version
       
     - name: login
-      run: docker login -u ${{ secrets.username }} -p {{ secrets.mytoken }} github.com
+      run: docker login -u ${{ secrets.USERNAME }} -p {{ secrets.MYTOKEN }} github.com
       
     - name: Build Image
       run: docker build -t github.com/RaviPolina/SampleMavenApp/maven-project:latest -f Dockerfile
