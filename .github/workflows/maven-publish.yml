@@ -38,4 +38,4 @@ jobs:
       run: docker build -t maven-project:latest .
       
     - name: Docker Push
-      run: docker push ghcr.io/RAVI/maven-project:latest
+      run: docker push ghcr.io/SampleMavenApp/maven-project:latest
