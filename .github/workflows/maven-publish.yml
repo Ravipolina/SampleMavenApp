@@ -29,4 +29,13 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: check docker version
-      run: docker -version
+      run: docker --version
+      
+    - name: login
+      run: docker login -u ${{ secrets.username }} -p {{ secrets.mytoken }} github.com
+      
+    - name: Build Image
+      run: docker build -t github.com/RaviPolina/SampleMavenApp/maven-project:latest -f Dockerfile
+      
+    - name: Docker Push
+      run: docker push github.com/RaviPolina/SampleMavenApp/maven-project:latest
