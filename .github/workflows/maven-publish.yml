@@ -35,7 +35,7 @@ jobs:
       run: docker login ghcr.io -u ${{ secrets.USERNAME }} -p ${{ secrets.GITHUB_TOKEN }}
       
     - name: Build Image
-      run: docker build -t ghcr.io/ravi/maven-project .
+      run: docker build -t ghcr.io/ravi/maven-project:latest .
       
     - name: Docker Push
-      run: docker push ghcr.io/ravi/maven-project
+      run: docker push ghcr.io/ravi/maven-project:latest
