@@ -24,6 +24,9 @@ jobs:
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
+        
+    - name: Build JAR file
+      run: mvn clean install 
 
     - uses: actions/checkout@v2
     - name: Login to GitHub Container Registry
