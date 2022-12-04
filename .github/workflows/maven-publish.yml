@@ -34,7 +34,7 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build the docker image and publish
+    - name: Build the docker image
       run: |
        docker build -t ghcr.io/ravi/maven_image:latest .
-       docker push ghcr.io/ravi/maven_image:latest
+ #docker push ghcr.io/ravi/maven_image:latest
