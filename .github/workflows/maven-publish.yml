@@ -37,5 +37,5 @@ jobs:
     - name: Push to dockerhub 
       run: |
        docker build -t maven_image:latest .
-       docker push doorstepnet/first_image:latest
+       docker push ${{ secrets.DOCKERHUB_USERNAME }}/first_image
 
