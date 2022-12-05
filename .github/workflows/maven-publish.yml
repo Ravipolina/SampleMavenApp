@@ -28,9 +28,9 @@ jobs:
     - name: Import Secrets
       uses: hashicorp/vault-action@v2
       with:
-        VAULT_ADDR: http://127.0.0.1:8200
-        VAULT_SKIP_VERIFY: 'true'
-        VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
+        url: http://127.0.0.1:8200
+        
+        token: ${{ secrets.VAULT_TOKEN }}
         secrets: |
           secret/docker DOCKERHUB_USERNAME;
           secret/docker DOCKERHUB_TOKEN
