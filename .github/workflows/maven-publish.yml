@@ -36,6 +36,6 @@ jobs:
         
     - name: Push to dockerhub 
       run: |
-       docker build -t maven_image:latest .
+       docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/first_image:latest .
        docker push ${{ secrets.DOCKERHUB_USERNAME }}/first_image
 
