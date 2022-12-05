@@ -32,7 +32,8 @@ jobs:
         tlsSkipVerify: 'true'
         token: ${{ secrets.VAULT_TOKEN }}
         secrets: |
-          secret/data/docker DOCKERHUB_USERNAME
+          secret/data/docker DOCKERHUB_USERNAME;
+          secret/data/docker DOCKERHUB_TOKEN
         
     - name: Set up Maven
       uses: stCarolas/setup-maven@v4.5
@@ -46,7 +47,7 @@ jobs:
       uses: docker/login-action@v2
       with:
         username: ${{ env.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        password: ${{ env.DOCKERHUB_TOKEN }}
         
     - name: Push to dockerhub 
       run: |
