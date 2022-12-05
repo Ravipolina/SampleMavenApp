@@ -31,7 +31,7 @@ jobs:
         url: http://127.0.0.1:8200
         token: ${{ secrets.VAULT_TOKEN }}
         secrets: |
-          secret/docker DOCKERHUB_USERNAME
+          secret/docker DOCKERHUB_USERNAME;
           secret/docker DOCKERHUB_TOKEN
         
     - name: Build JAR file
