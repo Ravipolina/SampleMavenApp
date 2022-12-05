@@ -32,7 +32,7 @@ jobs:
         tlsSkipVerify: 'true'
         token: ${{ secrets.VAULT_TOKEN }}
         secrets: |
-          secret/docker DOCKERHUB_USERNAME
+          v1/secret/docker DOCKERHUB_USERNAME
         
     - name: Build JAR file
       run: mvn -B package --file pom.xml 
