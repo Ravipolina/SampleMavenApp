@@ -34,6 +34,11 @@ jobs:
         secrets: |
           secret/data/docker DOCKERHUB_USERNAME
         
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4.5
+      with:
+        maven-version: 3.8.2
+        
     - name: Build JAR file
       run: mvn -B package --file pom.xml 
       
