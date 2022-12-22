@@ -30,15 +30,15 @@ jobs:
       id: login
       uses: hashicorp/vault-action@v2.4.3
       with:
-        address: http://127.0.0.1:8200
-        role_id: ${{ secrets.ROLE_ID }}
-        secret_id: ${{ secrets.SECRET_ID }}
+        url: http://127.0.0.1:8200
+        roleId: ${{ secrets.ROLE_ID }}
+        secretId: ${{ secrets.SECRET_ID }}
         
     - name: Retrieve secret from Vault
       id: retrieve_secret
       uses: hashicorp/vault-action@v2.4.3
       with:
-        address: http://127.0.0.1:8200
+        url: http://127.0.0.1:8200
         path: secret/data/docker
         token: ${{ steps.login.outputs.token }}
       env:
