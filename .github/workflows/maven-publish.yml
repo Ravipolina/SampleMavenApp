@@ -25,16 +25,27 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
         
-    - name: Import Secrets
-      uses: hashicorp/vault-action@v2.4.3
+    - uses: actions/checkout@v2
+    - name: Login to Vault
+      id: login
+      uses: hashicorp/vault-action@v1
       with:
-        url: http://127.0.0.1:8200
-        tlsSkipVerify: 'true'
-        token: ${{ secrets.VAULT_TOKEN }}
-        secrets: |
-          secret/data/docker DOCKERHUB_USERNAME;
-          secret/data/docker DOCKERHUB_TOKEN
+        address: http://127.0.0.1:8200
+        role_id: ${{ secrets.ROLE_ID }}
+        secret_id: ${{ secrets.SECRET_ID }}
         
+    - name: Retrieve secret from Vault
+      id: retrieve_secret
+      uses: hashicorp/vault-action@v1
+      with:
+        address: http://127.0.0.1:8200
+        path: secret/data/docker
+        token: ${{ steps.login.outputs.token }}
+    - name: Set output variables
+      env:
+        DOCKERHUB_USERNAME: ${{ steps.retrieve_secret.outputs.data.secret_1 }}
+        DOCKERHUB_TOKEN: ${{ steps.retrieve_secret.outputs.data.secret_2 }}
+      
     - name: Set up Maven
       uses: stCarolas/setup-maven@v4.5
       with:
