@@ -28,7 +28,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Login to Vault
       id: login
-      uses: hashicorp/vault-action@v1
+      uses: hashicorp/vault-action@v2.4.3
       with:
         address: http://127.0.0.1:8200
         role_id: ${{ secrets.ROLE_ID }}
@@ -36,7 +36,7 @@ jobs:
         
     - name: Retrieve secret from Vault
       id: retrieve_secret
-      uses: hashicorp/vault-action@v1
+      uses: hashicorp/vault-action@v2.4.3
       with:
         address: http://127.0.0.1:8200
         path: secret/data/docker
