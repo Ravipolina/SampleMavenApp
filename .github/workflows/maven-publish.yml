@@ -41,7 +41,6 @@ jobs:
         address: http://127.0.0.1:8200
         path: secret/data/docker
         token: ${{ steps.login.outputs.token }}
-    - name: Set output variables
       env:
         DOCKERHUB_USERNAME: ${{ steps.retrieve_secret.outputs.data.secret_1 }}
         DOCKERHUB_TOKEN: ${{ steps.retrieve_secret.outputs.data.secret_2 }}
