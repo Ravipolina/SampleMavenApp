@@ -35,8 +35,8 @@ jobs:
         roleId: ${{ secrets.ROLE_ID }}
         secretId: ${{ secrets.SECRET_ID }}
         secrets: |
-          secret/data/docker DOCKERHUB_USERNAME | DOCKERHUB_USERNAME;
-          secret/data/docker DOCKERHUB_TOKEN | DOCKERHUB_TOKEN
+          kv-v1/data/docker DOCKERHUB_USERNAME | DOCKERHUB_USERNAME;
+          kv-v1/data/docker DOCKERHUB_TOKEN | DOCKERHUB_TOKEN
       
     - name: Set up Maven
       uses: stCarolas/setup-maven@v4.5
